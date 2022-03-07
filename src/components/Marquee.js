@@ -1,27 +1,29 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import colors from 'styles/colors'
 
-const Marquee = ({ children }) => {
+const Marquee = ({ children, loaded }) => {
 
   const [translate, setTranslate] = useState(0)
-
-  const innerRef = useRef(null)
+  const [innerRef, setInnerRef]   = useState(null)
 
   useEffect(() => {
-    const innerRect = innerRef.current.getBoundingClientRect()
-    const width = innerRect.width
-    const translate = width / 2
-
-    setTranslate(translate)
-  }, [])
+    if (innerRef && loaded) {
+      const innerRect = innerRef.getBoundingClientRect()
+      const width = innerRect.width
+      const translate = width / 2
+  
+      console.log(translate)
+      setTranslate(translate)
+    }
+  }, [innerRef, loaded])
 
   return (
     <Wrapper>
       <Blur/>
       <Blur1/>
-      <Inner ref={innerRef} translate={translate}>
+      <Inner ref={ref => setInnerRef(ref)} translate={translate}>
         {children}
       </Inner>
     </Wrapper>
