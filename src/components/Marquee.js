@@ -33,13 +33,13 @@ export default Marquee
 const Wrapper = styled.div`
   width: 100%;
   border-style: solid;
-  border-width: 0.14vw;
+  border-width: 2px;
   border-color: ${colors.white};
   overflow: hidden;
   position: relative;
 
-  border-radius: 3.47vw;
-  box-shadow: 0px 0px 5px 1px ${colors.white};
+  border-radius: 2.524vw;
+  box-shadow: 0vw 0vw 0.253vw 0.051vw ${colors.white};
 `
 
 const Blur = styled.div`
@@ -50,7 +50,7 @@ const Blur = styled.div`
   right: 0;
   z-index: 2;
   
-  width: 11.94vw;
+  width: 8.684vw;
 `
 
 const Blur1 = styled(Blur)`

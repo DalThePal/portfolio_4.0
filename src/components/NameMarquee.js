@@ -43,10 +43,10 @@ const NameMarquee = () => {
 export default NameMarquee
 
 const Img = styled.img`
-  width: 2.43vw;
-  height: 2.43vw;
-  padding-top: 0.35vw;
-  padding-bottom: 0.35vw;
+  width: 1.767vw;
+  height: 1.767vw;
+  padding-top: 0.255vw;
+  padding-bottom: 0.255vw;
 `
 
 const P = styled.p`
@@ -57,9 +57,9 @@ const P = styled.p`
   line-height: 100%;
   color: ${colors.white};
   
-  font-size: 1.67vw;
-  margin-left: 1.39vw;
-  margin-right: 1.39vw;
-  padding-top: 0.35vw;
-  padding-bottom: 0.35vw;
+  font-size: 1.215vw;
+  margin-left: 1.011vw;
+  margin-right: 1.011vw;
+  padding-top: 0.255vw;
+  padding-bottom: 0.255vw;
 `
