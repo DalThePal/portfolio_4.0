@@ -75,6 +75,7 @@ const Img = styled.img`
   height: 1.767vw;
   padding-top: 0.255vw;
   padding-bottom: 0.255vw;
+  will-change: transform;
 `
 
 const P = styled.p`
@@ -84,6 +85,7 @@ const P = styled.p`
   font-weight: bold;
   line-height: 100%;
   color: ${colors.white};
+  will-change: transform;
   
   font-size: 1.215vw;
   margin-left: 1.011vw;
