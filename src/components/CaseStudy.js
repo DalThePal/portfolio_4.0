@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { CursorContext } from 'components/Providers'
 
 import colors from 'styles/colors'
 
 import RGB from 'images/RGB.png'
 
-const CaseStudy = ({ year, client, design, image, index, description }) => {
+const CaseStudy = ({ year, client, design, image, index, description, href }) => {
+
+  const cursor = useContext(CursorContext)
+
   return (
     <Wrapper image={image}>
       <Info>
@@ -23,6 +27,12 @@ const CaseStudy = ({ year, client, design, image, index, description }) => {
           <p>{design}</p>
         </Row>
         <P>{description}</P>
+        <A 
+          href={href} 
+          target="_blank"
+          onMouseEnter={() => cursor.setState("hover")}
+          onMouseLeave={() => cursor.setState("")}
+        >VISIT SITE ></A>
       </Info>
     </Wrapper>
   )
@@ -122,4 +132,19 @@ const P = styled.p`
   filter: blur(0.5px);
 
   margin-top: 1.253vw;
+  margin-bottom: 1.253vw;
+`
+
+const A = styled.a`
+  color: ${colors.purple};
+  font-family: Ofform;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.424vw;
+  line-height: 70%;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  cursor: none;
+
+  text-shadow: 0vw 0vw 0.153vw #E2E1FF;
 `

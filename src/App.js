@@ -8,13 +8,13 @@ import CaseStudies  from 'sections/02-CaseStudies'
 
 import Footer from 'components/Footer'
 import Scroll from 'components/Scroll'
-
-import StarSVG from 'images/star.svg'
+import Cursor from 'components/Cursor'
 
 const App = () => {
   return (
     <Wrapper>
       <Scroll/>
+      <Cursor/>
       <ScrollContainer className="smooth-scroll">
         <Hero/>
         <CaseStudies/>
@@ -28,7 +28,7 @@ export default App;
 
 const Wrapper = styled.main`
   background: ${colors.black};
-  cursor: url(${StarSVG}), auto;
+  cursor: none;
 `
 
 const ScrollContainer = styled.div`

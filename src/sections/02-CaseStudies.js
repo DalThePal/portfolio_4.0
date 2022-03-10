@@ -13,16 +13,14 @@ const DATA = [
     client: "Miqrotech",
     design: "Reform Collective",
     image: MiqrotechPNG,
+    href: "https://miqrotech.com",
     description: `
       I'm baby snackwave fixie swag, cornhole normcore 
       raw denim bicycle rights pork belly. Man braid 
       tacos sartorial vinyl neutra 3 wolf moon artisan,
       succulents jean shorts. Franzen tote bag you 
       probably haven't heard of them waistcoat 
-      crucifix salvia seitan. You probably haven't 
-      heard of them whatever bespoke dreamcatcher 
-      venmo YOLO four loko tattooed polaroid selvage 
-      pabst.
+      crucifix salvia seitan. 
     `
   },
   {
@@ -30,16 +28,14 @@ const DATA = [
     client: "Brandon Zacharias",
     design: "Brandon Zacharias",
     image: MrAndMrsZPNG,
+    href: "https://mrandmrsz.com",
     description: `
       I'm baby snackwave fixie swag, cornhole normcore 
       raw denim bicycle rights pork belly. Man braid 
       tacos sartorial vinyl neutra 3 wolf moon artisan,
       succulents jean shorts. Franzen tote bag you 
       probably haven't heard of them waistcoat 
-      crucifix salvia seitan. You probably haven't 
-      heard of them whatever bespoke dreamcatcher 
-      venmo YOLO four loko tattooed polaroid selvage 
-      pabst.
+      crucifix salvia seitan. 
     `
   },
   {
@@ -47,16 +43,14 @@ const DATA = [
     client: "Kiel Cummings",
     design: "Kiel Cummings",
     image: KielCummingsPNG,
+    href: "https://kielcummings.com",
     description: `
       I'm baby snackwave fixie swag, cornhole normcore 
       raw denim bicycle rights pork belly. Man braid 
       tacos sartorial vinyl neutra 3 wolf moon artisan,
       succulents jean shorts. Franzen tote bag you 
       probably haven't heard of them waistcoat 
-      crucifix salvia seitan. You probably haven't 
-      heard of them whatever bespoke dreamcatcher 
-      venmo YOLO four loko tattooed polaroid selvage 
-      pabst.
+      crucifix salvia seitan. 
     `
   },
 ]
@@ -67,11 +61,7 @@ const CaseStudies = () => {
     return (
       <CaseStudy
         key={index}
-        year={item.year}
-        client={item.client}
-        design={item.design}
-        image={item.image}
-        description={item.description}
+        {...item}
         index={index}
       />
     )

@@ -39,6 +39,7 @@ const Wrapper = styled.div`
   border-color: ${colors.white};
   overflow: hidden;
   position: relative;
+  will-change: transform;
 
   border-radius: 2.524vw;
   box-shadow: 0vw 0vw 0.253vw 0.051vw ${colors.white};
