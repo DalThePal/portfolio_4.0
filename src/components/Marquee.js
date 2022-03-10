@@ -14,7 +14,6 @@ const Marquee = ({ children, loaded }) => {
       const width = innerRect.width
       const translate = width / 2
   
-      console.log(translate)
       setTranslate(translate)
     }
   }, [innerRef, loaded])

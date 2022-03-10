@@ -15,12 +15,11 @@ const DATA = [
     image: MiqrotechPNG,
     href: "https://miqrotech.com",
     description: `
-      I'm baby snackwave fixie swag, cornhole normcore 
-      raw denim bicycle rights pork belly. Man braid 
-      tacos sartorial vinyl neutra 3 wolf moon artisan,
-      succulents jean shorts. Franzen tote bag you 
-      probably haven't heard of them waistcoat 
-      crucifix salvia seitan. 
+      While this site is not complex, we added hover, scroll, and 3D
+      animations to bring this site to the next level.  The homepage
+      features a binary wave created with webgl while the miqroaware 
+      page showcases miqrotech's star product using a sequence of images
+      to achieve a 3 dimensional experience.
     `
   },
   {
@@ -30,12 +29,10 @@ const DATA = [
     image: MrAndMrsZPNG,
     href: "https://mrandmrsz.com",
     description: `
-      I'm baby snackwave fixie swag, cornhole normcore 
-      raw denim bicycle rights pork belly. Man braid 
-      tacos sartorial vinyl neutra 3 wolf moon artisan,
-      succulents jean shorts. Franzen tote bag you 
-      probably haven't heard of them waistcoat 
-      crucifix salvia seitan. 
+      Created for Brandon and Morgan's (fiance) wedding, 
+      this site's notable features are the magnetic
+      buttons, interactive clouds, and the scroll based
+      rotating diamond.
     `
   },
   {
@@ -45,12 +42,10 @@ const DATA = [
     image: KielCummingsPNG,
     href: "https://kielcummings.com",
     description: `
-      I'm baby snackwave fixie swag, cornhole normcore 
-      raw denim bicycle rights pork belly. Man braid 
-      tacos sartorial vinyl neutra 3 wolf moon artisan,
-      succulents jean shorts. Franzen tote bag you 
-      probably haven't heard of them waistcoat 
-      crucifix salvia seitan. 
+      This site shows off Kiel's exceptional design skills
+      and style. It achieves this with a complimentary blend
+      of unique typography and hover animations along with a 
+      simple but effective layout.  
     `
   },
 ]
