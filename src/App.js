@@ -5,6 +5,7 @@ import colors from 'styles/colors'
 
 import Hero         from 'sections/01-Hero'
 import CaseStudies  from 'sections/02-CaseStudies'
+import About        from 'sections/03-About'
 
 import Footer from 'components/Footer'
 import Scroll from 'components/Scroll'
@@ -18,6 +19,7 @@ const App = () => {
       <ScrollContainer className="smooth-scroll">
         <Hero/>
         <CaseStudies/>
+        <About/>
         <Footer/>
       </ScrollContainer>
     </Wrapper>

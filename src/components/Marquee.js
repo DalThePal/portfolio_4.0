@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import colors from 'styles/colors'
+import { Container } from 'styles/uiElements'
 
 const Marquee = ({ children, loaded }) => {
 
@@ -31,17 +32,11 @@ const Marquee = ({ children, loaded }) => {
 
 export default Marquee
 
-const Wrapper = styled.div`
+const Wrapper = styled(Container)`
   width: 100%;
-  border-style: solid;
-  border-width: 2px;
-  border-color: ${colors.white};
   overflow: hidden;
   position: relative;
   will-change: transform;
-
-  border-radius: 2.524vw;
-  box-shadow: 0vw 0vw 0.253vw 0.051vw ${colors.white};
 `
 
 const Blur = styled.div`

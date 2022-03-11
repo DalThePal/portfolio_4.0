@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { CursorContext } from 'components/Providers'
 
 import colors from 'styles/colors'
+import { Container } from 'styles/uiElements'
 
 import RGB from 'images/RGB.png'
 
@@ -40,11 +41,8 @@ const CaseStudy = ({ year, client, design, image, index, description, href }) =>
 
 export default CaseStudy
 
-const Wrapper = styled.div`
+const Wrapper = styled(Container)`
   position: relative;
-  
-  border: 2px solid ${colors.white};
-  box-sizing: border-box;
   width: 100%;
 
   &::before {
@@ -58,20 +56,16 @@ const Wrapper = styled.div`
     background-repeat: repeat, no-repeat;
     background-size: 0.2vw, cover;
     background-position: center center;
-    filter: grayscale(1) blur(1px) drop-shadow(0vw 0vw 0.505vw #DCE8FF);
+    filter: grayscale(1) blur(1px);
     border-radius: 2.525vw;
   }
 
-  border-radius: 2.525vw;
   height: 49.091vw;
   margin-bottom: 3.535vw;
 `
 
-const Info = styled.div`
+const Info = styled(Container)`
   position: absolute;
-  border-radius: 2.525vw;
-  border: 2px solid ${colors.white};
-  filter: drop-shadow(0vw 0vw 0.505vw #DCE8FF);
   background: ${colors.black};
 
   width: 30.202vw;
