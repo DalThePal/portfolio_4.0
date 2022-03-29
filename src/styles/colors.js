@@ -6,7 +6,8 @@ const colors = {
   gray      : "#AAAAAA",
   darkGray  : "#3C3C3C",
   yellow    : "#E1B342",
-  teal      : "#33C9FF"
+  teal      : "#33C9FF",
+  red       : "#D94E4E"
 }
 
 export default colors

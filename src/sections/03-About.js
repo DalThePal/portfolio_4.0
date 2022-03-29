@@ -11,6 +11,7 @@ import Marquee from 'components/Marquee'
 import PurpleGIF from 'images/memoji-purple.gif'
 import YellowGIF from 'images/memoji-yellow.gif'
 import BlueGIF from 'images/memoji-blue.gif'
+import RedGIF from 'images/memoji-red.gif'
 
 gsap.registerPlugin(Draggable, InertiaPlugin)
 
@@ -51,13 +52,18 @@ const About = () => {
         break;
       
       case 1:
+        primaryColor.setState(colors.teal)
+        setMemojiSrc(BlueGIF)
+        break;
+
+      case 2:
         primaryColor.setState(colors.yellow)
         setMemojiSrc(YellowGIF)
         break;
 
-      case 2:
-        primaryColor.setState(colors.teal)
-        setMemojiSrc(BlueGIF)
+      case 3:
+        primaryColor.setState(colors.red)
+        setMemojiSrc(RedGIF)
         break;
 
       default:
@@ -141,9 +147,9 @@ const About = () => {
             />
 
             <Color active={activeColor === 0}>PURPLE</Color>
-            <Color active={activeColor === 1}>YELLOW</Color>
-            <Color active={activeColor === 2}>BLUE</Color>
-            <Color active={activeColor === 3}></Color>
+            <Color active={activeColor === 1}>BLUE</Color>
+            <Color active={activeColor === 2}>YELLOW</Color>
+            <Color active={activeColor === 3}>RED</Color>
             <Color active={activeColor === 4}></Color>
           </ColorPicker>
         </Row>
