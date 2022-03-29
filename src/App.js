@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import colors from 'styles/colors'
+import { Noise } from 'styles/uiElements'
 
 import Hero         from 'sections/01-Hero'
 import CaseStudies  from 'sections/02-CaseStudies'
@@ -17,6 +18,7 @@ const App = () => {
 
   return (
     <Wrapper>
+      <Noise/>
       <Scroll/>
       <Cursor/>
       <ScrollContainer className="smooth-scroll">
