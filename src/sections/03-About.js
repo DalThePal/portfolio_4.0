@@ -146,11 +146,11 @@ const About = () => {
               onMouseLeave={() => cursor.setState('')}
             />
 
-            <Color active={activeColor === 0}>PURPLE</Color>
-            <Color active={activeColor === 1}>BLUE</Color>
-            <Color active={activeColor === 2}>YELLOW</Color>
-            <Color active={activeColor === 3}>RED</Color>
-            <Color active={activeColor === 4}></Color>
+            <Color >PURPLE</Color>
+            <Color >BLUE</Color>
+            <Color >YELLOW</Color>
+            <Color >RED</Color>
+            <Color ></Color>
           </ColorPicker>
         </Row>
       </Right>
@@ -298,8 +298,10 @@ const Color = styled.div`
   justify-content: center;
   pointer-events: none;
   font-family: Ofform;
-  color: ${props => props.active ? colors.black : colors.white};
+  background-color: ${colors.black};
+  color: ${colors.white};
   transition: 500ms;
+  mix-blend-mode: difference;
 
   width: 100%;
   height: 20%;
