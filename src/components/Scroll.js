@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import LocomotiveScroll from "locomotive-scroll";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import gsap from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap/all";
 
-// gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
 const scrollOptions = {
   smooth: true,
@@ -41,27 +41,27 @@ const Scroll = () => {
       window.dispatchEvent(event)
     })
 
-    // const smoothScroll = document.querySelector(".smooth-scroll")
+    const smoothScroll = document.querySelector(".smooth-scroll")
 
-    // ScrollTrigger.scrollerProxy(".smooth-scroll", {
-    //   scrollTop(value) {
-    //     return arguments.length
-    //       ? locomotiveScroll.scrollTo(value, 0, 0)
-    //       : locomotiveScroll.scroll.instance.scroll.y;
-    //   },
-    //   getBoundingClientRect() {
-    //     return {
-    //       top: 0,
-    //       left: 0,
-    //       width: window.innerWidth,
-    //       height: window.innerHeight,
-    //     };
-    //   },
-    //   pinType: smoothScroll?.style.transform ? "transform" : "fixed",
-    // });
+    ScrollTrigger.scrollerProxy(".smooth-scroll", {
+      scrollTop(value) {
+        return arguments.length
+          ? locomotiveScroll.scrollTo(value, 0, 0)
+          : locomotiveScroll.scroll.instance.scroll.y;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+      pinType: smoothScroll?.style.transform ? "transform" : "fixed",
+    });
 
-    // ScrollTrigger.addEventListener("refresh", () => locomotiveScroll.update());
-    // ScrollTrigger.refresh();
+    ScrollTrigger.addEventListener("refresh", () => locomotiveScroll.update());
+    ScrollTrigger.refresh();
 
     return () => {
       if (locomotiveScroll) locomotiveScroll.destroy();

@@ -47,6 +47,7 @@ const Wrapper = styled(Container)`
   position: relative;
   width: calc(100vw - 3.535vw - 3.535vw);
   margin-right: 3.535vw;
+  height: 100%;
 
   &::before {
     position: absolute;
@@ -63,8 +64,12 @@ const Wrapper = styled(Container)`
     border-radius: 2.525vw;
   }
 
-  height: 49.091vw;
-  margin-bottom: 3.535vw;
+  &:last-of-type {
+    margin-right: 0vw;
+  }
+
+  /* height: 49.091vw; */
+  /* margin-bottom: 3.535vw; */
 `
 
 const Info = styled(Container)`

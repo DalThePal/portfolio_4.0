@@ -72,8 +72,9 @@ const DATA = [
 const CaseStudies = ({ initAnim }) => {
 
   const wrapperRef = useRef(null)
+  const innerRef = useRef(null)
 
-  const stickyOffset = `${vwToPx(3.535)}, -${vwToPx(10)}`
+  const stickyOffset = `${vwToPx(0)}, -${vwToPx(0)}`
 
   useEffect(() => {
     if (initAnim) {
@@ -83,6 +84,28 @@ const CaseStudies = ({ initAnim }) => {
       })
     }
   }, [initAnim])
+
+  useEffect(() => {
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        scroller: '.smooth-scroll',
+        trigger: wrapperRef.current,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      }
+    })
+
+    tl.to(innerRef.current, {
+      left: `-${100 * (DATA.length - 1)}%`,
+      ease: "none"
+    }, 0)
+
+    return () => {
+      tl.kill()
+    }
+  }, [])
 
   const projects = useMemo(() => DATA.map((item, index) => {
     return (
@@ -95,9 +118,10 @@ const CaseStudies = ({ initAnim }) => {
   }), [])
 
   return (
-    <Wrapper  id="case-studies-wrapper" ref={wrapperRef} length={DATA.length}>
+    <Wrapper id="case-studies-wrapper" ref={wrapperRef} length={DATA.length}>
       <Inner 
         length={DATA.length}
+        ref={innerRef}
         data-scroll
         data-scroll-target={"#case-studies-wrapper"}
         data-scroll-sticky
@@ -113,15 +137,17 @@ export default CaseStudies
 
 const Wrapper = styled.section`
   opacity: 0;
-  height: calc(100vw * ${props => props.length});
-
-  padding-left: 3.535vw;
-  padding-right: 3.535vw;
+  height: ${props => props.length * 100}vh;
 `
 
 const Inner = styled.div`
+  position: relative;
+  box-sizing: border-box;
+  left: 0%;
   height: 100vh;
-  width: calc(100vw * ${props => props.length});
+  width: ${props => props.length * 110}vw;
   display: flex;
   align-items: center;
+  will-change: transform, left;
+  padding: 3.535vw;
 `

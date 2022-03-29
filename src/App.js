@@ -21,7 +21,7 @@ const App = () => {
       <Noise/>
       <Scroll/>
       <Cursor/>
-      <ScrollContainer className="smooth-scroll">
+      <ScrollContainer className="smooth-scroll" data-scroll-container>
         <Hero setInitAnim={setInitAnim}/>
         <CaseStudies initAnim={initAnim}/>
         <About/>
