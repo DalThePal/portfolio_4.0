@@ -2,6 +2,8 @@ import React, { useMemo, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
+import { vwToPx } from 'utils/functions'
+
 import CaseStudy from 'components/CaseStudy'
 
 import MiqrotechPNG from 'images/miqrotech.png'
@@ -71,6 +73,8 @@ const CaseStudies = ({ initAnim }) => {
 
   const wrapperRef = useRef(null)
 
+  const stickyOffset = `${vwToPx(3.535)}, -${vwToPx(10)}`
+
   useEffect(() => {
     if (initAnim) {
       gsap.to(wrapperRef.current, {
@@ -91,8 +95,16 @@ const CaseStudies = ({ initAnim }) => {
   }), [])
 
   return (
-    <Wrapper ref={wrapperRef}>
-      {projects}
+    <Wrapper  id="case-studies-wrapper" ref={wrapperRef} length={DATA.length}>
+      <Inner 
+        length={DATA.length}
+        data-scroll
+        data-scroll-target={"#case-studies-wrapper"}
+        data-scroll-sticky
+        data-scroll-offset={stickyOffset}
+      >
+        {projects}
+      </Inner>
     </Wrapper>
   )
 }
@@ -101,7 +113,15 @@ export default CaseStudies
 
 const Wrapper = styled.section`
   opacity: 0;
+  height: calc(100vw * ${props => props.length});
 
   padding-left: 3.535vw;
   padding-right: 3.535vw;
+`
+
+const Inner = styled.div`
+  height: 100vh;
+  width: calc(100vw * ${props => props.length});
+  display: flex;
+  align-items: center;
 `

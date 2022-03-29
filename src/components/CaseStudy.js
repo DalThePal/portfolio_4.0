@@ -45,7 +45,8 @@ export default CaseStudy
 
 const Wrapper = styled(Container)`
   position: relative;
-  width: 100%;
+  width: calc(100vw - 3.535vw - 3.535vw);
+  margin-right: 3.535vw;
 
   &::before {
     position: absolute;

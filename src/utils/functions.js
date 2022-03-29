@@ -27,3 +27,9 @@ export const hexTofeColorMatrix = (hex) => {
   
   return numberList.join(' ').toString()
 };
+
+export const vwToPx = (vw) => {
+  const px = vw * (window.innerWidth / 100)
+
+  return px
+}
