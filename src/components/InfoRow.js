@@ -1,23 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { PrimaryColorContext } from 'components/Providers'
 
 import colors from 'styles/colors'
 
-import PointSVG from 'images/pointIcon.svg'
+import { ReactComponent as PointSVG } from 'images/pointIcon.svg'
 
 const InfoRow = () => {
+
+  const primaryColor = useContext(PrimaryColorContext)
+
   return (
     <Wrapper>
-      <Point1 src={PointSVG} alt="point"/>
+      <Point1 primaryColor={primaryColor.state}/>
       <Squares>
-        <Square color={colors.purple}/>
+        <Square color={primaryColor.state}/>
         <Square color={colors.white}/>
         <Square color={colors.gray}/>
         <Square color={colors.darkGray}/>
       </Squares>
       <Location>Salt Lake City, UT</Location>
-      <Point2 src={PointSVG} alt="point"/>
-      <Point3 src={PointSVG} alt="point"/>
+      <Point2 primaryColor={primaryColor.state}/>
+      <Point3 primaryColor={primaryColor.state}/>
     </Wrapper>
   )
 }
@@ -32,9 +36,14 @@ const Wrapper = styled.div`
   margin-top: 5.051vw;
 `
 
-const Point = styled.img`
+const Point = styled(PointSVG)`
   width: 1.768vw;
   height: 1.768vw;
+
+  circle, path {
+    transition: 500ms;
+    stroke: ${props => props.primaryColor}
+  }
 `
 
 const Point1 = styled(Point)`
@@ -59,6 +68,8 @@ const Point3 = styled(Point)`
 const Squares = styled.div`
   display: flex;
   position: absolute;
+  transition: 500ms;
+  
   top: 0.253vw;
   left: 4.04vw;
 `

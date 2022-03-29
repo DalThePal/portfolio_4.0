@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { CursorContext } from 'components/Providers'
+import { CursorContext, PrimaryColorContext } from 'components/Providers'
 
 import colors from 'styles/colors'
 import { Container } from 'styles/uiElements'
@@ -10,11 +10,12 @@ import RGB from 'images/RGB.png'
 const CaseStudy = ({ year, client, design, image, index, description, href }) => {
 
   const cursor = useContext(CursorContext)
+  const primaryColor = useContext(PrimaryColorContext)
 
   return (
     <Wrapper image={image}>
       <Info>
-        <H2>> {`0${index + 1} _____Project`}</H2>
+        <H2 primaryColor={primaryColor.state}>> {`0${index + 1} _____Project`}</H2>
         <Row>
           <p>Year:</p>
           <p>{year}</p>
@@ -33,6 +34,7 @@ const CaseStudy = ({ year, client, design, image, index, description, href }) =>
           target="_blank"
           onMouseEnter={() => cursor.setState("hover")}
           onMouseLeave={() => cursor.setState("")}
+          primaryColor={primaryColor.state}
         >VISIT SITE ></A>
       </Info>
     </Wrapper>
@@ -76,13 +78,14 @@ const Info = styled(Container)`
 `
 
 const H2 = styled.h2`
-  color: ${colors.purple};
+  color: ${props => props.primaryColor};
   font-family: Ofform;
   font-style: normal;
   font-weight: normal;
   font-size: 2.424vw;
   line-height: 70%;
   letter-spacing: -0.02em;
+  transition: 500ms;
 
   text-shadow: 0vw 0vw 0.253vw #E2E1FF;
 
@@ -130,7 +133,7 @@ const P = styled.p`
 `
 
 const A = styled.a`
-  color: ${colors.purple};
+  color: ${props => props.primaryColor};
   font-family: Ofform;
   font-style: normal;
   font-weight: normal;
@@ -139,6 +142,7 @@ const A = styled.a`
   letter-spacing: -0.02em;
   text-decoration: none;
   cursor: none;
+  transition: 500ms;
 
   text-shadow: 0vw 0vw 0.153vw #E2E1FF;
 `

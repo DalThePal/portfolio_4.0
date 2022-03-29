@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { PrimaryColorContext } from 'components/Providers'
 
 import colors from 'styles/colors'
 
@@ -7,12 +8,15 @@ import NameMarquee from 'components/NameMarquee'
 import InfoRow from 'components/InfoRow'
 
 const Hero = () => {
+
+  const primaryColor = useContext(PrimaryColorContext)
+
   return (
     <Wrapper>
       <NameMarquee/>
       <H1>
-        <Div>Dallen</Div>
-        <Div1>Hoyal</Div1>
+        <Div primaryColor={primaryColor.state}>Dallen</Div>
+        <Div1 primaryColor={primaryColor.state}>Hoyal</Div1>
       </H1>
       <InfoRow/>
     </Wrapper>
@@ -43,8 +47,9 @@ const Div = styled.div`
   letter-spacing: -0.01em;
   color: ${colors.white};
   width: 100%;
+  transition: 500ms;
 
-  text-shadow: 0vw 0vw 1.01vw rgba(255, 255, 255, 0.25), 0.253vw -0.253vw 1.01vw ${colors.purple}, -0.253vw 0.253vw 0.505vw ${colors.blue};
+  text-shadow: 0vw 0vw 1.01vw rgba(255, 255, 255, 0.25), 0.253vw -0.253vw 1.01vw ${props => props.primaryColor}, -0.253vw 0.253vw 0.505vw ${props => props.primaryColor};
   filter: blur(1px);
 `
 

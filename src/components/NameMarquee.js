@@ -1,68 +1,53 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import styled from 'styled-components'
+import { PrimaryColorContext } from 'components/Providers'
 
 import colors from 'styles/colors'
 
-import GlobeSVG from 'images/globeIcon.svg'
-import PointSVG from 'images/pointIcon.svg'
+import { ReactComponent as GlobeSVG } from 'images/globeIcon.svg'
+import { ReactComponent as PointSVG } from 'images/pointIcon.svg'
 
 import Marquee from './Marquee'
 
 const NameMarquee = () => {
 
-  const [loaded1, setLoaded1] = useState(false)
-  const [loaded2, setLoaded2] = useState(false)
-  const [loaded3, setLoaded3] = useState(false)
-  const [loaded4, setLoaded4] = useState(false)
-  const [loaded5, setLoaded5] = useState(false)
-  const [loaded6, setLoaded6] = useState(false)
-  const [loaded7, setLoaded7] = useState(false)
-  const [loaded8, setLoaded8] = useState(false)
-  const [loaded9, setLoaded9] = useState(false)
-  const [loaded10, setLoaded10] = useState(false)
-  const [loaded11, setLoaded11] = useState(false)
-  const [loaded12, setLoaded12] = useState(false)
+  const primaryColor = useContext(PrimaryColorContext)
+
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoaded(true)
+    }, 1000)
+  }, [])
 
   return (
     <Marquee 
-      loaded={
-        loaded1 && 
-        loaded2 && 
-        loaded3 && 
-        loaded4 && 
-        loaded5 && 
-        loaded6 &&
-        loaded7 &&
-        loaded8 &&
-        loaded9 &&
-        loaded10 &&
-        loaded11 &&
-        loaded12
-      }
+      loaded={loaded}
     >
-      <Img src={GlobeSVG} alt="globe" onLoad={() => setLoaded1(true)}/>
+      <Globe primaryColor={primaryColor.state}/>
       <P>Creative Developer</P>
-      <Img src={PointSVG} alt="point" onLoad={() => setLoaded2(true)}/>
+      <Point primaryColor={primaryColor.state}/>
       <P>ウェブ開発者&nbsp;&nbsp;DALLEN HOYAL</P>
-      <Img src={GlobeSVG} alt="globe" onLoad={() => setLoaded3(true)}/>
+      <Globe primaryColor={primaryColor.state}/>
       <P>Creative Developer</P>
-      <Img src={PointSVG} alt="point" onLoad={() => setLoaded4(true)}/>
+      <Point primaryColor={primaryColor.state}/>
       <P>ウェブ開発者&nbsp;&nbsp;DALLEN HOYAL</P>
-      <Img src={GlobeSVG} alt="globe" onLoad={() => setLoaded5(true)}/>
+      <Globe primaryColor={primaryColor.state}/>
       <P>Creative Developer</P>
-      <Img src={PointSVG} alt="point" onLoad={() => setLoaded6(true)}/>
+      <Point primaryColor={primaryColor.state}/>
       <P>ウェブ開発者&nbsp;&nbsp;DALLEN HOYAL</P>
-      <Img src={GlobeSVG} alt="globe" onLoad={() => setLoaded7(true)}/>
+      <Globe primaryColor={primaryColor.state}/>
       <P>Creative Developer</P>
-      <Img src={PointSVG} alt="point" onLoad={() => setLoaded8(true)}/>
+      <Point primaryColor={primaryColor.state}/>
       <P>ウェブ開発者&nbsp;&nbsp;DALLEN HOYAL</P>
-      <Img src={GlobeSVG} alt="globe" onLoad={() => setLoaded9(true)}/>
+      <Globe primaryColor={primaryColor.state}/>
       <P>Creative Developer</P>
-      <Img src={PointSVG} alt="point" onLoad={() => setLoaded10(true)}/>
+      <Point primaryColor={primaryColor.state}/>
       <P>ウェブ開発者&nbsp;&nbsp;DALLEN HOYAL</P>
-      <Img src={GlobeSVG} alt="globe" onLoad={() => setLoaded11(true)}/>
+      <Globe primaryColor={primaryColor.state}/>
       <P>Creative Developer</P>
-      <Img src={PointSVG} alt="point" onLoad={() => setLoaded12(true)}/>
+      <Point primaryColor={primaryColor.state}/>
       <P>ウェブ開発者&nbsp;&nbsp;DALLEN HOYAL</P>
     </Marquee>
   )
@@ -70,12 +55,28 @@ const NameMarquee = () => {
 
 export default NameMarquee
 
-const Img = styled.img`
+const svgStyles = `
   width: 1.767vw;
   height: 1.767vw;
   padding-top: 0.255vw;
   padding-bottom: 0.255vw;
   will-change: transform;
+`
+
+const Globe = styled(GlobeSVG)`
+  ${svgStyles}
+
+  path, circle {
+    stroke: ${props => props.primaryColor};
+  }
+`
+
+const Point = styled(PointSVG)`
+  ${svgStyles}
+
+  path, circle {
+    stroke: ${props => props.primaryColor};
+  }
 `
 
 const P = styled.p`

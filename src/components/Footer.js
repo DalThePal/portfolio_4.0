@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { PrimaryColorContext } from './Providers'
 
 import colors from 'styles/colors'
 
@@ -7,10 +8,13 @@ import NameMarquee from 'components/NameMarquee'
 import InfoRow from 'components/InfoRow'
 
 const Footer = () => {
+
+  const primaryColor = useContext(PrimaryColorContext)
+
   return (
     <Wrapper>
       <InfoRow/>
-      <Name>Dallen Hoyal</Name>
+      <Name primaryColor={primaryColor.state}>Dallen Hoyal</Name>
       <NameMarquee/>
     </Wrapper>
   )
@@ -34,7 +38,7 @@ const Name = styled.h3`
   letter-spacing: -0.02em;
   color: ${colors.white};
 
-  text-shadow: 0vw 0vw 1.01vw rgba(255, 255, 255, 0.25), 0.253vw -0.253vw 1.01vw ${colors.purple}, -0.253vw 0.253vw 0.505vw ${colors.blue};
+  text-shadow: 0vw 0vw 1.01vw rgba(255, 255, 255, 0.25), 0.253vw -0.253vw 1.01vw ${props => props.primaryColor}, -0.253vw 0.253vw 0.505vw ${props => props.primryColor};
   filter: blur(1px);
 
   margin-top: 1.01vw;

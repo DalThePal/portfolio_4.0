@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useCallback } from 'react'
 import styled from 'styled-components'
 import gsap, { Draggable, InertiaPlugin } from 'gsap/all'
 import { PrimaryColorContext, CursorContext } from 'components/Providers'
@@ -30,7 +30,7 @@ const About = () => {
     }, 1000)
   }, [])
 
-  const generateSnap = () => {
+  const generateSnap = useCallback(() => {
     let rect = colorPickerRef.getBoundingClientRect()
     let pxVal = rect.height / 5
     let snap = []
@@ -40,7 +40,7 @@ const About = () => {
     }
 
     return snap
-  }
+  }, [colorPickerRef])
 
   useEffect(() => {
     switch(activeColor) {
@@ -53,8 +53,11 @@ const About = () => {
         primaryColor.setState(colors.yellow)
         setMemojiSrc(YellowGIF)
         break;
+
+      default:
+        break;
     }
-  }, [activeColor])
+  }, [activeColor, primaryColor])
 
   useEffect(() => {
     if (selectorRef && colorPickerRef) {
@@ -75,7 +78,7 @@ const About = () => {
       drag[0].vars.cursor = 'none'
 
     }
-  }, [selectorRef, colorPickerRef])
+  }, [selectorRef, colorPickerRef, generateSnap])
 
   return (
     <Wrapper>
@@ -133,7 +136,7 @@ const About = () => {
 
             <Color active={activeColor === 0}>PURPLE</Color>
             <Color active={activeColor === 1}>YELLOW</Color>
-            <Color active={activeColor === 2}>BLUE</Color>
+            <Color active={activeColor === 2}></Color>
             <Color active={activeColor === 3}></Color>
             <Color active={activeColor === 4}></Color>
           </ColorPicker>
