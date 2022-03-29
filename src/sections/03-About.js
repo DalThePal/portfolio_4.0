@@ -1,21 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 import gsap, { Draggable, InertiaPlugin } from 'gsap/all'
+import { PrimaryColorContext, CursorContext } from 'components/Providers'
 
 import colors from 'styles/colors'
 import { Container } from 'styles/uiElements'
 
 import Marquee from 'components/Marquee'
 
-import MemojiGIF from 'images/memoji.gif'
+import PurpleGIF from 'images/memoji-purple.gif'
+import YellowGIF from 'images/memoji-yellow.gif'
 
 gsap.registerPlugin(Draggable, InertiaPlugin)
 
 const About = () => {
 
+  const primaryColor = useContext(PrimaryColorContext)
+  const cursor = useContext(CursorContext)
+
+  const [memojiSrc, setMemojiSrc] = useState(PurpleGIF)
   const [selectorRef, setSelectorRef] = useState(null)
   const [colorPickerRef, setColorPickerRef] = useState(null)
   const [loaded, setLoaded] = useState(false)
+  const [activeColor, setActiveColor] = useState(0)
 
   useEffect(() => {
     setTimeout(() => {
@@ -29,11 +36,25 @@ const About = () => {
     let snap = []
 
     for (let i = 0; i < 5; i++) {
-      snap.push(i * pxVal)
+      snap.push(Number((i * pxVal).toFixed(3)))
     }
 
     return snap
   }
+
+  useEffect(() => {
+    switch(activeColor) {
+      case 0:
+        primaryColor.setState(colors.purple)
+        setMemojiSrc(PurpleGIF)
+        break;
+      
+      case 1:
+        primaryColor.setState(colors.yellow)
+        setMemojiSrc(YellowGIF)
+        break;
+    }
+  }, [activeColor])
 
   useEffect(() => {
     if (selectorRef && colorPickerRef) {
@@ -43,7 +64,12 @@ const About = () => {
       const drag = Draggable.create(selectorRef, {
         type: 'top',
         inertia: true,
-        snap
+        zIndexBoost: false,
+        snap,
+        onThrowComplete: () => {          
+          const index = snap.indexOf(drag[0].y)
+          setActiveColor(index)
+        }
       })
 
       drag[0].vars.cursor = 'none'
@@ -54,7 +80,7 @@ const About = () => {
   return (
     <Wrapper>
       <Left>
-        <Title>\\About Me</Title>
+        <Title primaryColor={primaryColor.state}>\\About Me</Title>
         <Text>
           I'm baby snackwave fixie swag, cornhole normcore raw 
           denim bicycle rights pork belly. Man braid tacos 
@@ -72,35 +98,44 @@ const About = () => {
           crucifix salvia seitan. You probably haven't heard of them 
           whatever bespoke dreamcatcher venmo YOLO four loko tattooed 
           polaroid selvage pabst.
-        <Text/>
+        </Text>
         <Text>
           [CURRENT ROLE]..........................................Creative Developer
         </Text>
         <Text>
           [COMPANY]................................................Reform Collective
         </Text>
-
-        </Text>
       </Left>
       <Right>
         <MarqueeWrapper>
           <Marquee loaded={loaded}>
-            <RoleMarquee>CREATIVE WEB DEVELOPER CREATIVE WEB DEVELOPER </RoleMarquee>
+            <RoleMarquee primaryColor={primaryColor.state}>CREATIVE WEB DEVELOPER CREATIVE WEB DEVELOPER </RoleMarquee>
           </Marquee>
         </MarqueeWrapper>
+
         <MarqueeWrapper>
           <Marquee loaded={loaded}>
-            <LocationMarquee>SALT LAKE CITY, UTAH SALT LAKE CITY, UTAH </LocationMarquee>
+            <LocationMarquee primaryColor={primaryColor.state}>SALT LAKE CITY, UTAH SALT LAKE CITY, UTAH </LocationMarquee>
           </Marquee>
         </MarqueeWrapper>
 
         <Row>
           <MemojiWrapper>
-            <Memoji src={MemojiGIF} alt="its me"/>
+            <Memoji src={memojiSrc} alt="its me"/>
           </MemojiWrapper>
 
           <ColorPicker ref={ref => setColorPickerRef(ref)}>
-            <Selector ref={ref => setSelectorRef(ref)}/>
+            <Selector 
+              ref={ref => setSelectorRef(ref)}
+              onMouseEnter={() => cursor.setState('hover')}
+              onMouseLeave={() => cursor.setState('')}
+            />
+
+            <Color active={activeColor === 0}>PURPLE</Color>
+            <Color active={activeColor === 1}>YELLOW</Color>
+            <Color active={activeColor === 2}>BLUE</Color>
+            <Color active={activeColor === 3}></Color>
+            <Color active={activeColor === 4}></Color>
           </ColorPicker>
         </Row>
       </Right>
@@ -133,13 +168,14 @@ const Left = styled(Container)`
 
 const Title = styled.h5`
   color: ${colors.black};
-  background: ${colors.purple};
+  background: ${props => props.primaryColor};
   font-family: MD IO;
   font-style: normal;
   font-weight: 400;
   line-height: 150%;
   letter-spacing: -0.02em;
   width: fit-content;
+  transition: 500ms;
 
   font-size: 1.21vw;
   margin-bottom: 0.81vw;
@@ -183,13 +219,15 @@ const MarqueeInner = styled.div`
 `
 
 const RoleMarquee = styled(MarqueeInner)`
-  -webkit-text-stroke-color: ${colors.purple};
+  -webkit-text-stroke-color: ${props => props.primaryColor};
   -webkit-text-stroke-width: 2px;
   -webkit-text-fill-color: transparent;
+  transition: 500ms;
 ` 
 
 const LocationMarquee = styled(MarqueeInner)`
-  color: ${colors.purple};
+  color: ${props => props.primaryColor};
+  transition: 500ms;
 `
 
 const MemojiWrapper = styled(Container)`
@@ -228,9 +266,26 @@ const Row = styled.div`
 
 const Selector = styled.div`
   position: absolute;
+  z-index: 1;
+  cursor: none;
   background: ${colors.white};
   width: 100%;
   height: 20%;
   left: 0;
   top: 0;
+`
+
+const Color = styled.div`
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  font-family: Ofform;
+  color: ${props => props.active ? colors.black : colors.white};
+  transition: 500ms;
+
+  width: 100%;
+  height: 20%
 `
