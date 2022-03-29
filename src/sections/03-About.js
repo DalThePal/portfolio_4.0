@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import gsap, { Draggable, InertiaPlugin } from 'gsap/all'
 
 import colors from 'styles/colors'
 import { Container } from 'styles/uiElements'
 
 import Marquee from 'components/Marquee'
 
+import MemojiGIF from 'images/memoji.gif'
+
+gsap.registerPlugin(Draggable, InertiaPlugin)
+
 const About = () => {
 
+  const [selectorRef, setSelectorRef] = useState(null)
+  const [colorPickerRef, setColorPickerRef] = useState(null)
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
@@ -15,6 +22,34 @@ const About = () => {
       setLoaded(true)
     }, 1000)
   }, [])
+
+  const generateSnap = () => {
+    let rect = colorPickerRef.getBoundingClientRect()
+    let pxVal = rect.height / 5
+    let snap = []
+
+    for (let i = 0; i < 5; i++) {
+      snap.push(i * pxVal)
+    }
+
+    return snap
+  }
+
+  useEffect(() => {
+    if (selectorRef && colorPickerRef) {
+
+      const snap = generateSnap()
+
+      const drag = Draggable.create(selectorRef, {
+        type: 'top',
+        inertia: true,
+        snap
+      })
+
+      drag[0].vars.cursor = 'none'
+
+    }
+  }, [selectorRef, colorPickerRef])
 
   return (
     <Wrapper>
@@ -58,6 +93,16 @@ const About = () => {
             <LocationMarquee>SALT LAKE CITY, UTAH SALT LAKE CITY, UTAH </LocationMarquee>
           </Marquee>
         </MarqueeWrapper>
+
+        <Row>
+          <MemojiWrapper>
+            <Memoji src={MemojiGIF} alt="its me"/>
+          </MemojiWrapper>
+
+          <ColorPicker ref={ref => setColorPickerRef(ref)}>
+            <Selector ref={ref => setSelectorRef(ref)}/>
+          </ColorPicker>
+        </Row>
       </Right>
     </Wrapper>
   )
@@ -69,7 +114,7 @@ const Wrapper = styled.section`
   width: 100%;
   display: flex;
 
-  height: 47.27vw;
+  height: 50vw;
   padding-left: 3.535vw;
   padding-right: 3.535vw;
 `
@@ -145,4 +190,47 @@ const RoleMarquee = styled(MarqueeInner)`
 
 const LocationMarquee = styled(MarqueeInner)`
   color: ${colors.purple};
+`
+
+const MemojiWrapper = styled(Container)`
+  position: relative;
+  background: ${colors.black};
+  height: 100%;
+  overflow: hidden;
+  flex-grow: 1;
+
+  margin-right: 1.7vw;
+`
+
+const Memoji = styled.img`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  mix-blend-mode: screen;
+`
+
+const ColorPicker = styled(Container)`
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  width: 10vw;
+`
+
+const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  height: 32vw;
+`
+
+const Selector = styled.div`
+  position: absolute;
+  background: ${colors.white};
+  width: 100%;
+  height: 20%;
+  left: 0;
+  top: 0;
 `
