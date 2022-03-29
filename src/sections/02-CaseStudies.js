@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import gsap from 'gsap'
 
 import CaseStudy from 'components/CaseStudy'
 
@@ -66,7 +67,18 @@ const DATA = [
   },
 ]
 
-const CaseStudies = () => {
+const CaseStudies = ({ initAnim }) => {
+
+  const wrapperRef = useRef(null)
+
+  useEffect(() => {
+    if (initAnim) {
+      gsap.to(wrapperRef.current, {
+        duration: 1,
+        opacity: 1
+      })
+    }
+  }, [initAnim])
 
   const projects = useMemo(() => DATA.map((item, index) => {
     return (
@@ -79,7 +91,7 @@ const CaseStudies = () => {
   }), [])
 
   return (
-    <Wrapper>
+    <Wrapper ref={wrapperRef}>
       {projects}
     </Wrapper>
   )
@@ -88,6 +100,8 @@ const CaseStudies = () => {
 export default CaseStudies
 
 const Wrapper = styled.section`
+  opacity: 0;
+
   padding-left: 3.535vw;
   padding-right: 3.535vw;
 `
