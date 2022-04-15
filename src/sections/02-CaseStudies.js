@@ -1,6 +1,7 @@
-import React, { useMemo, useEffect, useRef } from 'react'
+import React, { useMemo, useEffect, useRef, useContext } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
+import { InitAnimationContext } from 'components/Providers'
 
 import CaseStudy from 'components/CaseStudy'
 
@@ -67,18 +68,19 @@ const DATA = [
   },
 ]
 
-const CaseStudies = ({ initAnim }) => {
+const CaseStudies = () => {
 
+  const initAnimation = useContext(InitAnimationContext)
   const wrapperRef = useRef(null)
 
   useEffect(() => {
-    if (initAnim) {
+    if (initAnimation.state) {
       gsap.to(wrapperRef.current, {
         duration: 1,
         opacity: 1
       })
     }
-  }, [initAnim])
+  }, [initAnimation])
 
   const projects = useMemo(() => DATA.map((item, index) => {
     return (

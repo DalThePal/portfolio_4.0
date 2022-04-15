@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { CursorContext, PrimaryColorContext } from 'components/Providers'
+import { CursorContext, PrimaryColorContext, InitAnimationContext } from 'components/Providers'
+import gsap from 'gsap'
 
 import colors from 'styles/colors'
 import { Container } from 'styles/uiElements'
@@ -9,42 +10,79 @@ import RGB from 'images/RGB.png'
 
 const CaseStudy = ({ year, client, design, image, index, description, href }) => {
 
-  const cursor = useContext(CursorContext)
+  const setCursor = useContext(CursorContext).setState
   const primaryColor = useContext(PrimaryColorContext)
+  const initAnimation = useContext(InitAnimationContext)
+
+  const wrapperRef = useRef(null)
+  const borderRef = useRef(null)
+  const infoRef = useRef(null)
+
+  useEffect(() => {
+    if (initAnimation.state) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          scroller: '.smooth-scroll',
+          trigger: wrapperRef.current,
+          start: "top top+=70%",
+        }
+      })
+
+      tl.from(borderRef.current, {
+        duration: 1,
+        height: '0%'
+      }, 0)
+
+      tl.from(infoRef.current, {
+        duration: 0.5,
+        height: '6.939vw',
+      }, 0.4)
+    }
+  }, [initAnimation.state])
 
   return (
-    <Wrapper image={image}>
-      <Info>
-        <H2 primaryColor={primaryColor.state}>> {`0${index + 1} _____Project`}</H2>
-        <Row>
-          <p>Year:</p>
-          <p>{year}</p>
-        </Row>
-        <Row>
-          <p>client:</p>
-          <p>{client}</p>
-        </Row>
-        <Row>
-          <p>design:</p>
-          <p>{design}</p>
-        </Row>
-        <P>{description}</P>
-        <A 
-          href={href} 
-          target="_blank"
-          onMouseEnter={() => cursor.setState("hover")}
-          onMouseLeave={() => cursor.setState("")}
-          primaryColor={primaryColor.state}
-        >VISIT SITE ></A>
-      </Info>
+    <Wrapper ref={wrapperRef}>
+      <Border ref={borderRef} image={image}>
+        <Info ref={infoRef}>
+          <H2 primaryColor={primaryColor.state}>> {`0${index + 1} _____Project`}</H2>
+          <Row>
+            <p>Year:</p>
+            <p>{year}</p>
+          </Row>
+          <Row>
+            <p>client:</p>
+            <p>{client}</p>
+          </Row>
+          <Row>
+            <p>design:</p>
+            <p>{design}</p>
+          </Row>
+          <P>{description}</P>
+          <A 
+            href={href} 
+            target="_blank"
+            onMouseEnter={() => setCursor("hover")}
+            onMouseLeave={() => setCursor("")}
+            primaryColor={primaryColor.state}
+          >VISIT SITE ></A>
+        </Info>
+      </Border>
     </Wrapper>
   )
 }
 
 export default CaseStudy
 
-const Wrapper = styled(Container)`
+const Wrapper = styled.div`
+  width: 100%;
+  height: 49.091vw;
+  margin-bottom: 3.535vw;
+`
+
+const Border = styled(Container)`
   position: relative;
+  overflow: hidden;
+  height: 100%;
   width: 100%;
 
   &::before {
@@ -54,21 +92,36 @@ const Wrapper = styled(Container)`
     content: "";
     top: 0;
     left: 0;
-    background-image: url(${RGB}), url(${props => props.image});
-    background-repeat: repeat, no-repeat;
-    background-size: 0.2vw, cover;
+    background-image: url(${props => props.image});
+    background-repeat: no-repeat;
+    background-size: cover;
     background-position: center center;
     filter: grayscale(1) blur(1px);
     border-radius: 2.525vw;
   }
 
-  height: 49.091vw;
-  margin-bottom: 3.535vw;
+  &::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    top: 0;
+    left: 0;
+    background-image: url(${RGB});
+    background-repeat: repeat;
+    background-size: 0.2vw;
+    background-position: center center;
+    filter: grayscale(1) blur(1px);
+    opacity: 0.5;
+    border-radius: 2.525vw;
+  }
 `
 
 const Info = styled(Container)`
   position: absolute;
+  z-index: 2;
   background: ${colors.black};
+  overflow: hidden;
 
   width: 30.202vw;
   height: 28.939vw;
@@ -89,7 +142,7 @@ const H2 = styled.h2`
 
   text-shadow: 0vw 0vw 0.253vw #E2E1FF;
 
-  margin-bottom: 2vw;
+  margin-bottom: 2.5vw;
 `
 
 const Row = styled.div`

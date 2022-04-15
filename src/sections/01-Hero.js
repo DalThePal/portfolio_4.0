@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
-import { PrimaryColorContext } from 'components/Providers'
+import { PrimaryColorContext, InitAnimationContext } from 'components/Providers'
 import gsap from 'gsap'
 
 import colors from 'styles/colors'
@@ -10,9 +10,10 @@ import InfoRow from 'components/InfoRow'
 
 import { hexTofeColorMatrix } from 'utils/functions'
 
-const Hero = ({ setInitAnim }) => {
+const Hero = () => {
 
   const primaryColor = useContext(PrimaryColorContext)
+  const initAnimation = useContext(InitAnimationContext)
 
   const marqueeWrapperRef = useRef(null)
   const InfoRowWrapperRef = useRef(null)
@@ -42,28 +43,30 @@ const Hero = ({ setInitAnim }) => {
       })
 
       tl.to(dallenRef, {
-        duration: 8,
-        strokeDasharray: `${dallenLength}, ${dallenLength}`
+        duration: 5,
+        strokeDasharray: `${dallenLength}, ${dallenLength}`,
+        ease: 'none'
       }, 0)
 
       tl.to(hoyalRef, {
-        duration: 8,
-        strokeDasharray: `${hoyalLength}, ${hoyalLength}`
+        duration: 5,
+        strokeDasharray: `${hoyalLength}, ${hoyalLength}`,
+        ease: 'none'
       }, 0)
 
       tl.to([dallenRef, hoyalRef], {
         duration: 1,
-        fill: colors.white,
-      }, 8)
+        fill: 'rgba(255, 255, 255, 1)',
+      }, 5)
 
-      tl.call(setInitAnim, [true], 8)
+      tl.call(initAnimation.setState, [true], 5)
 
       tl.to([marqueeWrapperRef.current, InfoRowWrapperRef.current], {
         duration: 1,
         opacity: 1
-      }, 8)
+      }, 5)
     }
-  }, [dallenRef, hoyalRef, dallenLength, hoyalLength, setInitAnim])
+  }, [dallenRef, hoyalRef, dallenLength, hoyalLength, initAnimation])
 
   return (
     <Wrapper>
@@ -81,8 +84,8 @@ const Hero = ({ setInitAnim }) => {
         </Hoyal>
 
         <svg>
-          <filter id="name-blur" x="0.799988" y="0" width="1591" height="243" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <filter id="name-blur" x="0.799988" y="0" width="1591" height="243" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
             <feOffset dx="-5" dy="5"/>
             <feGaussianBlur stdDeviation="5"/>
@@ -143,7 +146,7 @@ const Hoyal = styled.svg`
 `
 
 const Path = styled.path`
-  fill: transparent;
+  fill: rgba(255, 255, 255, 0);
   stroke: ${colors.white};
   stroke-width: 2px;
 `

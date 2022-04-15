@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import colors from 'styles/colors'
@@ -13,17 +13,14 @@ import Scroll from 'components/Scroll'
 import Cursor from 'components/Cursor'
 
 const App = () => {
-
-  const [initAnim, setInitAnim] = useState(false)
-
   return (
     <Wrapper>
       <Noise/>
       <Scroll/>
       <Cursor/>
       <ScrollContainer className="smooth-scroll">
-        <Hero setInitAnim={setInitAnim}/>
-        <CaseStudies initAnim={initAnim}/>
+        <Hero />
+        <CaseStudies/>
         <About/>
         <Footer/>
       </ScrollContainer>
