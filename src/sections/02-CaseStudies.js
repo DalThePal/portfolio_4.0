@@ -9,8 +9,23 @@ import MiqrotechPNG from 'images/miqrotech.png'
 import MrAndMrsZPNG from 'images/mrandmrsz.png'
 import KielCummingsPNG from 'images/kielcummings.png'
 import TiktokPNG from 'images/tiktok.png'
+import FreshcutPNG from 'images/freshcut-token.png'
 
 const DATA = [
+  {
+    year: 2022,
+    client: "Freshcut",
+    design: "Reform Collective",
+    
+    image: FreshcutPNG,
+    href: "https://freshcut-token.reformcollective.com",
+    description: `
+      This one page site has some some unique brand
+      oriented animations, scroll accelerated marquees, as
+      well as an image sequence that utilizes the canvas
+      element and api for performance.
+    `
+  },
   {
     year: 2022,
     client: "Brandon Zacharias",
