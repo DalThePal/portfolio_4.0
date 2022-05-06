@@ -21,7 +21,7 @@ const InfoRow = () => {
         <Square color={colors.darkGray}/>
       </Squares>
       <Location>Salt Lake City, UT</Location>
-      <Email>Dallen.Hoyal@Gmail.com</Email>
+      <Email>dallen.hoyal@gmail.com</Email>
       <Point2 primaryColor={primaryColor.state}/>
       <Point3 primaryColor={primaryColor.state}/>
     </Wrapper>
