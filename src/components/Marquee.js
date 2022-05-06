@@ -1,29 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import colors from 'styles/colors'
 import { Container } from 'styles/uiElements'
+import media from 'styles/media'
 
-const Marquee = ({ children, loaded }) => {
-
-  const [translate, setTranslate] = useState(0)
-  const [innerRef, setInnerRef]   = useState(null)
-
-  useEffect(() => {
-    if (innerRef && loaded) {
-      const innerRect = innerRef.getBoundingClientRect()
-      const width = innerRect.width
-      const translate = width / 2
-  
-      setTranslate(translate)
-    }
-  }, [innerRef, loaded])
-
+const Marquee = ({ children, speed }) => {
   return (
     <Wrapper>
       <Blur/>
       <Blur1/>
-      <Inner ref={ref => setInnerRef(ref)} translate={translate}>
+      <Inner speed={speed}>
+        {children}
+        {children}
+        {children}
         {children}
       </Inner>
     </Wrapper>
@@ -48,6 +38,10 @@ const Blur = styled.div`
   z-index: 2;
   
   width: 8.684vw;
+
+  ${media.mobile} {
+    width: 20vw;
+  }
 `
 
 const Blur1 = styled(Blur)`
@@ -56,18 +50,18 @@ const Blur1 = styled(Blur)`
   left: 0;
 `
 
-const marqueeEffect = (x) => keyframes`
+const marqueeEffect =  keyframes`
   from {
-    transform: translateX(0);
+    transform: translateX(0%);
   }
   to {
-    transform: translateX(-${x}px);
+    transform: translateX(-25%);
   }
 `
 
 const Inner = styled.div`
   will-change: transform;
-  animation: ${props => marqueeEffect(props.translate)} 15s linear infinite;
+  animation: ${marqueeEffect} ${props => props.speed || 10}s linear infinite;
   display: flex;
   align-items: center;
   white-space: pre;

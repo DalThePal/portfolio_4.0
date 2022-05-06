@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { PrimaryColorContext } from 'components/Providers'
 
 import colors from 'styles/colors'
+import media from 'styles/media'
 
 import { ReactComponent as PointSVG } from 'images/pointIcon.svg'
 
@@ -34,11 +35,21 @@ const Wrapper = styled.div`
 
   height: 1.768vw;
   margin-top: 5.051vw;
+
+  ${media.mobile} {
+    height: 5.6vw;
+    margin-top: 10.67vw;
+  }
 `
 
 const Point = styled(PointSVG)`
   width: 1.768vw;
   height: 1.768vw;
+
+  ${media.mobile} {
+    width: 5.33vw;
+    height: 5.33vw;
+  }
 
   circle, path {
     transition: 500ms;
@@ -57,6 +68,10 @@ const Point2 = styled(Point)`
   left: 50%;
   top: 0vw;
   transform: translateX(-50%);
+
+  ${media.mobile} {
+    display: none;
+  }
 `
 
 const Point3 = styled(Point)`
@@ -72,12 +87,23 @@ const Squares = styled.div`
   
   top: 0.253vw;
   left: 4.04vw;
+
+  ${media.mobile} {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10.67vw;
+  }
 `
 
 const Square = styled.div`
   background: ${props => props.color};
   width: 1.313vw;
   height: 1.313vw;
+
+  ${media.mobile} {
+    width: 4.27vw;
+    height: 4.27vw;
+  }
 `
 
 const P = styled.p`
@@ -86,14 +112,24 @@ const P = styled.p`
   font-family: MD IO;
   font-style: normal;
   font-weight: normal;
-  font-size: 0.909vw;
   line-height: 150%;
   letter-spacing: -0.02em;
-
+  
+  font-size: 0.909vw;
   text-shadow: 0vw 0vw 0.253vw ${colors.white};
+
+  ${media.mobile} {
+    font-size: 3.73vw;
+  }
 `
 
 const Location = styled(P)`
   top: 0.253vw;
   left: 10.576vw;
+
+  ${media.mobile} {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 33vw;
+  }
 `

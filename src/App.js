@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { ScreenContext } from 'components/Providers'
 
 import colors from 'styles/colors'
 import { Noise } from 'styles/uiElements'
@@ -13,11 +14,14 @@ import Scroll from 'components/Scroll'
 import Cursor from 'components/Cursor'
 
 const App = () => {
+
+  const screen = useContext(ScreenContext).state
+
   return (
     <Wrapper>
       <Noise/>
       <Scroll/>
-      <Cursor/>
+      {!screen.mobile && <Cursor/>}
       <ScrollContainer className="smooth-scroll">
         <Hero />
         <CaseStudies/>

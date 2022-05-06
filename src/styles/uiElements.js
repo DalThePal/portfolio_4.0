@@ -1,13 +1,20 @@
 import styled, { keyframes } from 'styled-components'
+
 import colors from 'styles/colors'
+import media from 'styles/media'
 
 import noise from 'images/noise.png'
 
 export const Container = styled.div`
   border: 2px solid ${colors.white};
   box-sizing: border-box;
+
   border-radius: 2.525vw;
   box-shadow: 0vw 0vw 0.505vw #DCE8FF;
+
+  ${media.mobile} {
+    border-radius: 13.33vw;
+  }
 `
 
 const grain = keyframes`

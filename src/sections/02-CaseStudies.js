@@ -1,8 +1,10 @@
 import React, { useMemo, useEffect, useRef, useContext } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
-import { InitAnimationContext } from 'components/Providers'
 
+import media from 'styles/media'
+
+import { InitAnimationContext } from 'components/Providers'
 import CaseStudy from 'components/CaseStudy'
 
 import MiqrotechPNG from 'images/miqrotech.png'
@@ -121,4 +123,9 @@ const Wrapper = styled.section`
 
   padding-left: 3.535vw;
   padding-right: 3.535vw;
+
+  ${media.mobile} {
+    padding-left: 5.33vw;
+    padding-right: 5.33vw;
+  }
 `

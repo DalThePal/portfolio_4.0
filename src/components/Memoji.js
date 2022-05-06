@@ -4,6 +4,7 @@ import { PrimaryColorContext } from './Providers'
 
 import colors from 'styles/colors'
 import { Container } from 'styles/uiElements'
+import media from 'styles/media'
 
 import PurpleGIF from 'images/memoji-purple.gif'
 import YellowGIF from 'images/memoji-yellow.gif'
@@ -34,6 +35,10 @@ const MemojiWrapper = styled(Container)`
   flex-grow: 1;
 
   margin-right: 1.7vw;
+
+  ${media.mobile} {
+    margin-right: 5.33vw;
+  }
 `
 
 const Image = styled.img`
@@ -44,4 +49,8 @@ const Image = styled.img`
   max-width: 100%;
   mix-blend-mode: screen;
   visibility: ${props => props.visible ? 'visible' : 'hidden'};
+
+  ${media.mobile} {
+    border-radius: 16vw;
+  }
 `

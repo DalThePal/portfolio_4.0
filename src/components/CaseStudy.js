@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { CursorContext, PrimaryColorContext, InitAnimationContext } from 'components/Providers'
+import { CursorContext, PrimaryColorContext, InitAnimationContext, ScreenContext } from 'components/Providers'
 import gsap from 'gsap'
 
 import colors from 'styles/colors'
 import { Container } from 'styles/uiElements'
+import media from 'styles/media'
 
 import RGB from 'images/RGB.png'
 
@@ -13,6 +14,7 @@ const CaseStudy = ({ year, client, design, image, index, description, href }) =>
   const setCursor = useContext(CursorContext).setState
   const primaryColor = useContext(PrimaryColorContext)
   const initAnimation = useContext(InitAnimationContext)
+  const screen = useContext(ScreenContext).state
 
   const wrapperRef = useRef(null)
   const borderRef = useRef(null)
@@ -57,7 +59,7 @@ const CaseStudy = ({ year, client, design, image, index, description, href }) =>
             <p>design:</p>
             <p>{design}</p>
           </Row>
-          <P>{description}</P>
+          {!screen.mobile && <P>{description}</P>}
           <A 
             href={href} 
             target="_blank"
@@ -77,6 +79,11 @@ const Wrapper = styled.div`
   width: 100%;
   height: 49.091vw;
   margin-bottom: 3.535vw;
+
+  ${media.mobile} {
+    height: 190.67vw;
+    margin-bottom: 5.33vw;
+  }
 `
 
 const Border = styled(Container)`
@@ -97,7 +104,12 @@ const Border = styled(Container)`
     background-size: cover;
     background-position: center center;
     filter: grayscale(1) blur(1px);
+
     border-radius: 2.525vw;
+
+    ${media.mobile} {
+      border-radius: 13.33vw;
+    }
   }
 
   &::after {
@@ -113,7 +125,12 @@ const Border = styled(Container)`
     background-position: center center;
     filter: grayscale(1) blur(1px);
     opacity: 0.5;
+
     border-radius: 2.525vw;
+
+    ${media.mobile} {
+      border-radius: 13.33vw;
+    }
   }
 `
 
@@ -128,6 +145,15 @@ const Info = styled(Container)`
   top: 2.02vw;
   right: 2.02vw;
   padding: 2.5vw;
+
+  ${media.mobile} {
+    width: 79.2vw;
+    height: 75.2vw;
+    top: 5vw;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 10.67vw 5.33vw;
+  }
 `
 
 const H2 = styled.h2`
@@ -135,26 +161,30 @@ const H2 = styled.h2`
   font-family: Ofform;
   font-style: normal;
   font-weight: normal;
-  font-size: 2.424vw;
   line-height: 70%;
   letter-spacing: -0.02em;
   transition: 500ms;
-
+  
+  font-size: 2.424vw;
   text-shadow: 0vw 0vw 0.253vw #E2E1FF;
-
   margin-bottom: 2.5vw;
+
+  ${media.mobile} {
+    font-size: 6.13vw;
+    margin-bottom: 13.33vw;
+  }
 `
 
 const Row = styled.div`
   width: 100%;
   border-bottom: 1px solid ${colors.white};
-  padding-bottom: 0.253vw;
   // box-shadow: inset 0vw -0.051vw 0vw #EAE9E9;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1vw;
   filter: blur(0.5px);
+  margin-bottom: 1vw;
+  padding-bottom: 0.253vw;
 
   p {
     font-family: MD IO;
@@ -165,6 +195,15 @@ const Row = styled.div`
     letter-spacing: -0.02em;
     color: ${colors.white};
     text-shadow: 0vw 0vw 0.253vw #C1C0FF;
+  }
+
+  ${media.mobile} {
+    padding-bottom: 1.33vw;
+    margin-bottom: 2vw;
+
+    p {
+      font-size: 4.27vw;
+    }
   }
 `
 
@@ -190,12 +229,17 @@ const A = styled.a`
   font-family: Ofform;
   font-style: normal;
   font-weight: normal;
-  font-size: 1.424vw;
   line-height: 70%;
   letter-spacing: -0.02em;
   text-decoration: none;
   cursor: none;
   transition: 500ms;
-
+  
+  font-size: 1.424vw;
   text-shadow: 0vw 0vw 0.153vw #E2E1FF;
+
+  ${media.mobile} {
+    font-size: 6.13vw;
+    margin-top: 5.33vw;
+  }
 `

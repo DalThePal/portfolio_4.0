@@ -4,6 +4,7 @@ import { PrimaryColorContext, InitAnimationContext } from 'components/Providers'
 import gsap from 'gsap'
 
 import colors from 'styles/colors'
+import media from 'styles/media'
 
 import NameMarquee from 'components/NameMarquee'
 import InfoRow from 'components/InfoRow'
@@ -123,18 +124,33 @@ const Wrapper = styled.section`
   padding-left: 3.535vw;
   padding-right: 3.535vw;
   padding-bottom: 3.033vw;
+
+  ${media.mobile} {
+    padding: 10.67vw 4.8vw;
+  }
 `
 
 const H1 = styled.h1`
   position: relative;
   width: 100%;
+  
   height: 30vw;
-
   margin-top: 1.515vw;
+
+  ${media.mobile} {
+    height: 33.07vw;
+    margin-top: 5.33vw;
+  }
 `
 
 const Dallen = styled.svg`
   width: 77vw;
+
+  ${media.mobile} {
+    position: relative;
+    width: 100%;
+    top: -20vw;
+  }
 `
 
 const Hoyal = styled.svg`
@@ -143,6 +159,13 @@ const Hoyal = styled.svg`
   right: 0;
   top: 15vw;
   width: 78vw;
+
+  ${media.mobile} {
+    width: 100%;
+    right: unset;
+    left: 0;
+    top: -5vw;
+  }
 `
 
 const Path = styled.path`
@@ -150,6 +173,7 @@ const Path = styled.path`
   stroke: ${colors.white};
   stroke-width: 2px;
 `
+
 const MarqueeWrapper = styled.div`
   opacity: 0;
 `

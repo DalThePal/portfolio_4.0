@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { PrimaryColorContext } from './Providers'
 
 import colors from 'styles/colors'
+import media from 'styles/media'
 
 import NameMarquee from 'components/NameMarquee'
 import InfoRow from 'components/InfoRow'
@@ -26,6 +27,12 @@ const Wrapper = styled.footer`
   padding-left: 3.535vw;
   padding-right: 3.535vw;
   padding-bottom: 6.566vw;
+
+  ${media.mobile} {
+    padding-left: 5.33vw;
+    padding-right: 5.33vw;
+    padding-bottom: 10.67vw;
+  }
 `
 
 const Name = styled.h3`
@@ -43,4 +50,10 @@ const Name = styled.h3`
 
   margin-top: 1.01vw;
   margin-bottom: 1.01vw;
+
+  ${media.mobile} {
+    font-size: 10vw;
+    margin-top: 5.33vw;
+    margin-bottom: 5.33vw;
+  }
 `

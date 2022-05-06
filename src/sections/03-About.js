@@ -1,9 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { PrimaryColorContext} from 'components/Providers'
 
 import colors from 'styles/colors'
 import { Container } from 'styles/uiElements'
+import media from 'styles/media'
+
+import { useMedia } from 'utils/hooks'
 
 import Marquee from 'components/Marquee'
 import Memoji from 'components/Memoji'
@@ -13,13 +16,19 @@ const About = () => {
 
   const primaryColor = useContext(PrimaryColorContext)
 
-  const [loaded, setLoaded] = useState(false)
+  const roleText = useMedia(
+    '[CURRENT ROLE]..........................................Creative Developer',
+    '[CURRENT ROLE]..........................................Creative Developer',
+    '[CURRENT ROLE]..........................................Creative Developer',
+    '[CURRENT ROLE]...Creative Developer',
+  )
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoaded(true)
-    }, 1000)
-  }, [])
+  const companyText = useMedia(
+    '[COMPANY]................................................Reform Collective',
+    '[COMPANY]................................................Reform Collective',
+    '[COMPANY]................................................Reform Collective',
+    '[COMPANY].........Reform Collective',
+  )
 
   return (
     <Wrapper>
@@ -43,22 +52,18 @@ const About = () => {
           whatever bespoke dreamcatcher venmo YOLO four loko tattooed 
           polaroid selvage pabst.
         </Text>
-        <Text>
-          [CURRENT ROLE]..........................................Creative Developer
-        </Text>
-        <Text>
-          [COMPANY]................................................Reform Collective
-        </Text>
+        <Text>{roleText}</Text>
+        <Text>{companyText}</Text>
       </Left>
       <Right>
         <MarqueeWrapper>
-          <Marquee loaded={loaded}>
+          <Marquee>
             <RoleMarquee primaryColor={primaryColor.state}>CREATIVE WEB DEVELOPER CREATIVE WEB DEVELOPER </RoleMarquee>
           </Marquee>
         </MarqueeWrapper>
 
         <MarqueeWrapper>
-          <Marquee loaded={loaded}>
+          <Marquee>
             <LocationMarquee primaryColor={primaryColor.state}>SALT LAKE CITY, UTAH SALT LAKE CITY, UTAH </LocationMarquee>
           </Marquee>
         </MarqueeWrapper>
@@ -83,6 +88,13 @@ const Wrapper = styled.section`
   height: 50vw;
   padding-left: 3.535vw;
   padding-right: 3.535vw;
+
+  ${media.mobile} {
+    flex-direction: column;
+    padding-left: 5.33vw;
+    padding-right: 5.33vw;
+    height: auto;
+  }
 `
 
 const Left = styled(Container)`
@@ -95,6 +107,16 @@ const Left = styled(Container)`
   padding-left: 3.03vw;
   padding-right: 3.03vw;
   margin-right: 1.7vw;
+
+  ${media.mobile} {
+    margin-right: 0vw;
+    width: 100%;
+    padding-top: 10.67vw;
+    padding-bottom: 10.67vw;
+    padding-left: 5.33vw;
+    padding-right: 5.33vw;
+    margin-bottom: 5.33vw;
+  }
 `
 
 const Title = styled.h5`
@@ -110,6 +132,11 @@ const Title = styled.h5`
 
   font-size: 1.21vw;
   margin-bottom: 0.81vw;
+
+  ${media.mobile} {
+    font-size: 4.8vw;
+    margin-bottom: 5.33vw;
+  }
 `
 
 const Text = styled.p`
@@ -123,6 +150,11 @@ const Text = styled.p`
 
   font-size: 0.91vw;
   margin-bottom: 2.02vw;
+
+  ${media.mobile} {
+    font-size: 3.73vw;
+    margin-bottom: 5.33vw;
+  }
 `
 
 const Right = styled.div`
@@ -131,10 +163,18 @@ const Right = styled.div`
   height: 100%;
 
   width: 45.71vw;
+
+  ${media.mobile} {
+    width: 100%;
+  }
 `
 
 const MarqueeWrapper = styled.div`
   margin-bottom: 1.7vw;
+
+  ${media.mobile} {
+    margin-bottom: 5.33vw;
+  }
 `
 
 const MarqueeInner = styled.div`
@@ -147,6 +187,12 @@ const MarqueeInner = styled.div`
   font-size: 4.85vw;
   padding-top: 2.02vw;
   padding-bottom: 2.02vw;
+
+  ${media.mobile} {
+    font-size: 12.8vw;
+    padding-top: 2.67vw;
+    padding-bottom: 2.67vw;
+  }
 `
 
 const RoleMarquee = styled(MarqueeInner)`
@@ -166,4 +212,8 @@ const Row = styled.div`
   justify-content: space-between;
 
   height: 32vw;
+
+  ${media.mobile} {
+    height: 70vw;
+  }
 `

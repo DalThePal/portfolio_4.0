@@ -6,6 +6,7 @@ import { CursorContext, PrimaryColorContext } from 'components/Providers'
 
 import colors from 'styles/colors'
 import { Container } from 'styles/uiElements'
+import media from 'styles/media'
 
 const ColorPicker = () => {
 
@@ -111,6 +112,10 @@ const Wrapper = styled(Container)`
   position: relative;
 
   width: 10vw;
+
+  ${media.mobile} {
+    width: 20vw;
+  }
 `
 
 const Selector = styled.div`
@@ -140,4 +145,8 @@ const Color = styled.div`
   height: 20%;
 
   font-size: 1.5vw;
+
+  ${media.mobile} {
+    font-size: 3vw;
+  }
 `
