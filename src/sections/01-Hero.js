@@ -44,13 +44,13 @@ const Hero = () => {
       })
 
       tl.to(dallenRef, {
-        duration: 5,
+        duration: 2.5,
         strokeDasharray: `${dallenLength}, ${dallenLength}`,
         ease: 'none'
       }, 0)
 
       tl.to(hoyalRef, {
-        duration: 5,
+        duration: 2.5,
         strokeDasharray: `${hoyalLength}, ${hoyalLength}`,
         ease: 'none'
       }, 0)
@@ -58,14 +58,14 @@ const Hero = () => {
       tl.to([dallenRef, hoyalRef], {
         duration: 1,
         fill: 'rgba(255, 255, 255, 1)',
-      }, 5)
+      }, 2.5)
 
-      tl.call(initAnimation.setState, [true], 5)
+      tl.call(initAnimation.setState, [true], 2.5)
 
       tl.to([marqueeWrapperRef.current, InfoRowWrapperRef.current], {
         duration: 1,
         opacity: 1
-      }, 5)
+      }, 2.5)
     }
   }, [dallenRef, hoyalRef, dallenLength, hoyalLength, initAnimation])
 
