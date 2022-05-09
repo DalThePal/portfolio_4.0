@@ -21,6 +21,7 @@ const InfoRow = () => {
         <Square color={colors.darkGray}/>
       </Squares>
       <Location>Salt Lake City, UT</Location>
+      <Email>dallen.hoyal@gmail.com</Email>
       <Point2 primaryColor={primaryColor.state}/>
       <Point3 primaryColor={primaryColor.state}/>
     </Wrapper>
@@ -126,6 +127,15 @@ const P = styled.p`
 const Location = styled(P)`
   top: 0.253vw;
   left: 10.576vw;
+
+  ${media.mobile} {
+    display: none;
+  }
+`
+
+const Email = styled(P)`
+  top: 0.253vw;
+  right: 3vw;
 
   ${media.mobile} {
     top: 50%;

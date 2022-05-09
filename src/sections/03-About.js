@@ -35,22 +35,23 @@ const About = () => {
       <Left>
         <Title primaryColor={primaryColor.state}>\\About Me</Title>
         <Text>
-          I'm baby snackwave fixie swag, cornhole normcore raw 
-          denim bicycle rights pork belly. Man braid tacos 
-          sartorial vinyl neutra 3 wolf moon artisan, succulents 
-          jean shorts. Franzen tote bag you probably haven't heard 
-          of them waistcoat crucifix salvia seitan. You probably 
-          haven't heard of them whatever bespoke dreamcatcher venmo 
-          YOLO four loko tattooed polaroid selvage pabst.
+          I am a creative developer based in Salt Lake City, UT.
+          as a creative developer, I enjoy being given ambitious, 
+          crazy site designs, and making them a reality. The process
+          of tearing an idea down into its smallest components,
+          learning, and figuring out how to put those pieces together,
+          all while making it performant, excites me.
         </Text>
         <Text>
-          I'm baby snackwave fixie swag, cornhole normcore raw denim 
-          bicycle rights pork belly. Man braid tacos sartorial vinyl 
-          neutra 3 wolf moon artisan, succulents jean shorts. Franzen 
-          tote bag you probably haven't heard of them waistcoat 
-          crucifix salvia seitan. You probably haven't heard of them 
-          whatever bespoke dreamcatcher venmo YOLO four loko tattooed 
-          polaroid selvage pabst.
+          Apart from web development, I enjoy creating and fixing a number
+          of things. I'll often spend a weekend with a gameboy console installing
+          a new ips screen or a usb-c charging port.  Other days I'll have a few 
+          D&D miniatures that I will paint.  When I'm feeling like I really need
+          some frustration in my life I'll work on an old 70's enduro to add to my
+          collection.
+        </Text>
+        <Text>
+          Anyways, I enjoy making things.  If you have things that need to be made, reach out!
         </Text>
         <Text>{roleText}</Text>
         <Text>{companyText}</Text>
