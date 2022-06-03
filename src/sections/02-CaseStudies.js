@@ -11,15 +11,24 @@ import MiqrotechPNG from 'images/miqrotech.png'
 import MrAndMrsZPNG from 'images/mrandmrsz.png'
 import KielCummingsPNG from 'images/kielcummings.png'
 import TiktokPNG from 'images/tiktok.png'
-import FreshcutPNG from 'images/freshcut-token.png'
+import FreshcutTokenPNG from 'images/freshcut-token.png'
+import FreshcutCreatorJPG from 'images/freshcut-creator.jpg'
 
 const DATA = [
   {
     year: 2022,
     client: "Freshcut",
     design: "Reform Collective",
-    
-    image: FreshcutPNG,
+    title: "Freshcut Creator",
+    image: FreshcutCreatorJPG,
+    href: "https://freshcut-creator.reformcollective.com"
+  },
+  {
+    year: 2022,
+    client: "Freshcut",
+    design: "Reform Collective",
+    title: "Freshcut Token",
+    image: FreshcutTokenPNG,
     href: "https://freshcut-token.reformcollective.com",
     description: `
       This one page site has some some unique brand
@@ -32,6 +41,7 @@ const DATA = [
     year: 2022,
     client: "Brandon Zacharias",
     design: "Brandon Zacharias",
+    title: "Mr and Mrs Z",
     image: MrAndMrsZPNG,
     href: "https://mrandmrsz.com",
     description: `
@@ -45,6 +55,7 @@ const DATA = [
     year: 2022,
     client: "Kiel Cummings",
     design: "Kiel Cummings",
+    title: "Kiel Portfolio",
     image: KielCummingsPNG,
     href: "https://kielcummings.com",
     description: `
@@ -58,6 +69,7 @@ const DATA = [
     year: 2021,
     client: "Miqrotech",
     design: "Reform Collective",
+    title: "Miqrotech",
     image: MiqrotechPNG,
     href: "https://miqrotech.com",
     description: `
@@ -72,6 +84,7 @@ const DATA = [
     year: 2021,
     client: "Bitski",
     design: "Reform Collective",
+    title: "TikTok Top Moments",
     image: TiktokPNG,
     href: "https://tiktok.reformcollective.com",
     description: `

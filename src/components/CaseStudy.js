@@ -1,24 +1,29 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { CursorContext, PrimaryColorContext, InitAnimationContext, ScreenContext } from 'components/Providers'
+import { CursorContext, PrimaryColorContext, InitAnimationContext } from 'components/Providers'
 import gsap from 'gsap'
 
 import colors from 'styles/colors'
 import { Container } from 'styles/uiElements'
 import media from 'styles/media'
 
+import { useMedia } from 'utils/hooks'
+
 import RGB from 'images/RGB.png'
 
-const CaseStudy = ({ year, client, design, image, index, description, href }) => {
+const CaseStudy = ({ year, client, design, image, index, description, href, title }) => {
 
   const setCursor = useContext(CursorContext).setState
   const primaryColor = useContext(PrimaryColorContext)
   const initAnimation = useContext(InitAnimationContext)
-  const screen = useContext(ScreenContext).state
 
   const wrapperRef = useRef(null)
   const borderRef = useRef(null)
   const infoRef = useRef(null)
+
+  const startingInfoHeight = useMedia('6.939vw', '6.939vw', '6.939vw', '30vw')
+
+  console.log(startingInfoHeight)
 
   useEffect(() => {
     if (initAnimation.state) {
@@ -37,16 +42,17 @@ const CaseStudy = ({ year, client, design, image, index, description, href }) =>
 
       tl.from(infoRef.current, {
         duration: 0.5,
-        height: '6.939vw',
+        height: startingInfoHeight,
       }, 0.4)
     }
-  }, [initAnimation.state])
+  }, [initAnimation.state, startingInfoHeight])
 
   return (
     <Wrapper ref={wrapperRef}>
       <Border ref={borderRef} image={image}>
         <Info ref={infoRef}>
-          <H2 primaryColor={primaryColor.state}>> {`0${index + 1} _____Project`}</H2>
+          {/* <H2 primaryColor={primaryColor.state}>> {`0${index + 1} _____Project`}</H2> */}
+          <H2 primaryColor={primaryColor.state}>{title}</H2>
           <Row>
             <p>Year:</p>
             <p>{year}</p>
@@ -59,7 +65,7 @@ const CaseStudy = ({ year, client, design, image, index, description, href }) =>
             <p>design:</p>
             <p>{design}</p>
           </Row>
-          {!screen.mobile && <P>{description}</P>}
+          {/* {!screen.mobile && <P>{description}</P>} */}
           <A 
             href={href} 
             target="_blank"
@@ -141,7 +147,7 @@ const Info = styled(Container)`
   overflow: hidden;
 
   width: 30.202vw;
-  height: 28.939vw;
+  height: 18vw;
   top: 2.02vw;
   right: 2.02vw;
   padding: 2.5vw;
@@ -165,13 +171,14 @@ const H2 = styled.h2`
   letter-spacing: -0.02em;
   transition: 500ms;
   
-  font-size: 2.424vw;
-  text-shadow: 0vw 0vw 0.253vw #E2E1FF;
+  font-size: 2vw;
+  text-shadow: 0vw 0vw 0.1vw #E2E1FF;
   margin-bottom: 2.5vw;
 
   ${media.mobile} {
-    font-size: 6.13vw;
-    margin-bottom: 13.33vw;
+    font-size: 8vw;
+    height: 11.2vw;
+    margin-bottom: 6.33vw;
   }
 `
 
@@ -236,10 +243,10 @@ const A = styled.a`
   transition: 500ms;
   
   font-size: 1.424vw;
-  text-shadow: 0vw 0vw 0.153vw #E2E1FF;
+  text-shadow: 0vw 0vw 0.1vw #E2E1FF;
 
   ${media.mobile} {
     font-size: 6.13vw;
-    margin-top: 5.33vw;
+    margin-top: 10.33vw;
   }
 `
