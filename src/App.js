@@ -18,28 +18,7 @@ const App = () => {
   const screen = useContext(ScreenContext).state
 
   useEffect(() => {
-    const vitalsURL = "https://vitals.vercel-analytics.com/v1/vitals"
-
-    const body = {
-      dsn: process.env.REACT_APP_VERCEL_ANALYTICS_ID,
-      event_name: 'visit'
-    }
-
-    const blob = new Blob([new URLSearchParams(body).toString()], {
-      // This content type is necessary for `sendBeacon`
-      type: 'application/x-www-form-urlencoded',
-    });
-
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon(vitalsURL, blob);
-    } else {
-      fetch(vitalsURL, {
-        body: blob,
-        method: 'POST',
-        credentials: 'omit',
-        keepalive: true,
-      });
-    }
+    
   }, [])
 
   return (
