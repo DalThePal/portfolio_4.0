@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { ScreenContext } from 'components/Providers'
-import axios from 'axios'
 
 import colors from 'styles/colors'
 import { Noise } from 'styles/uiElements'
