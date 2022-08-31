@@ -11,7 +11,7 @@ import { useMedia } from 'utils/hooks'
 
 import RGB from 'images/RGB.png'
 
-const CaseStudy = ({ year, client, design, image, index, description, href, title }) => {
+const CaseStudy = ({ year, client, design, image, index, description, href, title, awards }) => {
 
   const setCursor = useContext(CursorContext).setState
   const primaryColor = useContext(PrimaryColorContext)
@@ -40,9 +40,9 @@ const CaseStudy = ({ year, client, design, image, index, description, href, titl
         height: '0%'
       }, 0)
 
-      tl.from(infoRef.current, {
+      tl.to(infoRef.current, {
         duration: 0.5,
-        height: startingInfoHeight,
+        height: 'auto',
       }, 0.4)
     }
   }, [initAnimation.state, startingInfoHeight])
@@ -58,13 +58,29 @@ const CaseStudy = ({ year, client, design, image, index, description, href, titl
             <p>{year}</p>
           </Row>
           <Row>
-            <p>client:</p>
+            <p>Client:</p>
             <p>{client}</p>
           </Row>
           <Row>
-            <p>design:</p>
+            <p>Design:</p>
             <p>{design}</p>
           </Row>
+          {awards && <Awards>
+            <Row>
+              <p>Awards:</p>
+              <p>{awards[0]}</p>
+            </Row>
+            {awards.map((item, index) => {
+              if (index !== 0) {
+                return (
+                  <Row key={index}>
+                    <p></p>
+                    <p>{item}</p>
+                  </Row>
+                )
+              }
+            })}
+          </Awards>}
           {/* {!screen.mobile && <P>{description}</P>} */}
           <A 
             href={href} 
@@ -72,7 +88,7 @@ const CaseStudy = ({ year, client, design, image, index, description, href, titl
             onMouseEnter={() => setCursor("hover")}
             onMouseLeave={() => setCursor("")}
             primaryColor={primaryColor.state}
-          >VISIT SITE ></A>
+          >VISIT SITE &gt;</A>
         </Info>
       </Border>
     </Wrapper>
@@ -147,14 +163,14 @@ const Info = styled(Container)`
   overflow: hidden;
 
   width: 30.202vw;
-  height: 18vw;
+  height: 6.939vw;
   top: 2.02vw;
   right: 2.02vw;
   padding: 2.5vw;
 
   ${media.mobile} {
     width: 79.2vw;
-    height: 75.2vw;
+    height: 30vw;
     top: 5vw;
     right: 50%;
     transform: translateX(50%);
@@ -214,22 +230,22 @@ const Row = styled.div`
   }
 `
 
-const P = styled.p`
-  font-family: MD IO;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.909vw;
-  line-height: 150%;
-  letter-spacing: -0.02em;
+// const P = styled.p`
+//   font-family: MD IO;
+//   font-style: normal;
+//   font-weight: normal;
+//   font-size: 0.909vw;
+//   line-height: 150%;
+//   letter-spacing: -0.02em;
 
-  color: ${colors.white};
+//   color: ${colors.white};
 
-  text-shadow: 0vw 0vw 0.253vw #C1C0FF;
-  filter: blur(0.5px);
+//   text-shadow: 0vw 0vw 0.253vw #C1C0FF;
+//   filter: blur(0.5px);
 
-  margin-top: 1.253vw;
-  margin-bottom: 1.253vw;
-`
+//   margin-top: 1.253vw;
+//   margin-bottom: 1.253vw;
+// `
 
 const A = styled.a`
   color: ${props => props.primaryColor};
@@ -248,5 +264,21 @@ const A = styled.a`
   ${media.mobile} {
     font-size: 6.13vw;
     margin-top: 10.33vw;
+  }
+`
+
+const Awards = styled.div`
+  border-bottom: 1px solid ${colors.white};
+  margin-bottom: 1vw;
+  padding-bottom: 0.253vw;
+
+  ${media.mobile} {
+    padding-bottom: 1.33vw;
+    margin-bottom: 2vw;
+  }
+
+  ${Row} {
+    margin-bottom: 0;
+    border: unset;
   }
 `

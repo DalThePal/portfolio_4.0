@@ -13,8 +13,37 @@ import KielCummingsPNG from 'images/kielcummings.png'
 import TiktokPNG from 'images/tiktok.png'
 import FreshcutTokenPNG from 'images/freshcut-token.png'
 import FreshcutCreatorJPG from 'images/freshcut-creator.jpg'
+import NewformIMG from 'images/new-form.jpg'
+import RREIMG from 'images/rre.jpg'
+import Source7IMG from 'images/source-7.png'
+import GeniesIMG from 'images/genies.png'
 
 const DATA = [
+  {
+    year: 2022,
+    client: "New Form Capital",
+    design: "Reform Collective",
+    title: "New Form Capital",
+    image: NewformIMG,
+    href: "https://newform.reformcollective.com",
+    awards: [
+      "CSS Design Awards SOTD"
+    ]
+  },
+  {
+    year: 2022,
+    client: "RRE Ventures",
+    design: "Reform Collective",
+    title: "RRE Ventures",
+    image: RREIMG,
+    href: "https://rre.reformcollective.com",
+    awards: [
+      "Awwwards SOTD",
+      "Awwwards Dev Award",
+      "Awwwards Honorable Mention",
+      "CSS Design Awards SOTD"
+    ]
+  },
   {
     year: 2022,
     client: "Freshcut",
@@ -96,6 +125,22 @@ const DATA = [
       heavy animations.  
     `
   },
+  {
+    year: 2021,
+    client: "Genies",
+    design: "Reform Collective & MetaLab",
+    title: "Genies",
+    image: GeniesIMG,
+    href: "https://genies.reformcollective.com"
+  },
+  {
+    year: 2021,
+    client: "Source7",
+    design: "Reform Collective",
+    title: "Source7",
+    image: Source7IMG,
+    href: "https://source7.reformcollective.com/"
+  }
 ]
 
 const CaseStudies = () => {

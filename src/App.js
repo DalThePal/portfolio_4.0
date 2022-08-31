@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { ScreenContext } from 'components/Providers'
+import axios from 'axios'
 
 import colors from 'styles/colors'
 import { Noise } from 'styles/uiElements'
@@ -16,6 +17,13 @@ import Cursor from 'components/Cursor'
 const App = () => {
 
   const screen = useContext(ScreenContext).state
+
+  useEffect(() => {
+    axios.post('https://vitals.vercel-analytics.com/v1/vitals', {
+      dsn: process.env.VERCEL_ANALYTICS_ID,
+      event_name: 'visit'
+    })
+  }, [])
 
   return (
     <Wrapper>
