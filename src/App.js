@@ -20,7 +20,7 @@ const App = () => {
 
   useEffect(() => {
     axios.post('https://vitals.vercel-analytics.com/v1/vitals', {
-      dsn: process.env.VERCEL_ANALYTICS_ID,
+      dsn: process.env.REACT_APP_VERCEL_ANALYTICS_ID,
       event_name: 'visit'
     })
   }, [])
