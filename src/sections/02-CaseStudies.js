@@ -7,16 +7,16 @@ import media from 'styles/media'
 import { InitAnimationContext } from 'components/Providers'
 import CaseStudy from 'components/CaseStudy'
 
-import MiqrotechPNG from 'images/miqrotech.png'
-import MrAndMrsZPNG from 'images/mrandmrsz.png'
-import KielCummingsPNG from 'images/kielcummings.png'
-import TiktokPNG from 'images/tiktok.png'
-import FreshcutTokenPNG from 'images/freshcut-token.png'
-import FreshcutCreatorJPG from 'images/freshcut-creator.jpg'
-import NewformIMG from 'images/new-form.jpg'
-import RREIMG from 'images/rre.jpg'
-import Source7IMG from 'images/source-7.png'
-import GeniesIMG from 'images/genies.png'
+import MiqrotechIMG from 'images/miqrotech.webp'
+import MrAndMrsZIMG from 'images/mrandmrsz.webp'
+import KielCummingsIMG from 'images/kielcummings.webp'
+import TiktokIMG from 'images/tiktok.webp'
+import FreshcutTokenIMG from 'images/freshcut-token.webp'
+import FreshcutCreatorIMG from 'images/freshcut-creator.webp'
+import NewformIMG from 'images/new-form.webp'
+import RREIMG from 'images/rre.webp'
+import Source7IMG from 'images/source-7.webp'
+import GeniesIMG from 'images/genies.webp'
 
 const DATA = [
   {
@@ -49,7 +49,7 @@ const DATA = [
     client: "Freshcut",
     design: "Reform Collective",
     title: "Freshcut Creator",
-    image: FreshcutCreatorJPG,
+    image: FreshcutCreatorIMG,
     href: "https://freshcut-creator.reformcollective.com"
   },
   {
@@ -57,7 +57,7 @@ const DATA = [
     client: "Freshcut",
     design: "Reform Collective",
     title: "Freshcut Token",
-    image: FreshcutTokenPNG,
+    image: FreshcutTokenIMG,
     href: "https://freshcut-token.reformcollective.com",
     description: `
       This one page site has some some unique brand
@@ -71,7 +71,7 @@ const DATA = [
     client: "Brandon Zacharias",
     design: "Brandon Zacharias",
     title: "Mr and Mrs Z",
-    image: MrAndMrsZPNG,
+    image: MrAndMrsZIMG,
     href: "https://mrandmrsz.com",
     description: `
       Created for Brandon and Morgan's (fiance) wedding, 
@@ -85,7 +85,7 @@ const DATA = [
     client: "Kiel Cummings",
     design: "Kiel Cummings",
     title: "Kiel Portfolio",
-    image: KielCummingsPNG,
+    image: KielCummingsIMG,
     href: "https://kielcummings.com",
     description: `
       This site shows off Kiel's exceptional design skills
@@ -99,7 +99,7 @@ const DATA = [
     client: "Miqrotech",
     design: "Reform Collective",
     title: "Miqrotech",
-    image: MiqrotechPNG,
+    image: MiqrotechIMG,
     href: "https://miqrotech.com",
     description: `
       While this site is not complex, we added hover, scroll, and 3D
@@ -114,7 +114,7 @@ const DATA = [
     client: "Bitski",
     design: "Reform Collective",
     title: "TikTok Top Moments",
-    image: TiktokPNG,
+    image: TiktokIMG,
     href: "https://tiktok.reformcollective.com",
     description: `
       This site was built for a collaboration between Bitski and 
