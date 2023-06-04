@@ -23,8 +23,6 @@ const CaseStudy = ({ year, client, design, image, index, description, href, titl
 
   const startingInfoHeight = useMedia('6.939vw', '6.939vw', '6.939vw', '30vw')
 
-  console.log(startingInfoHeight)
-
   useEffect(() => {
     if (initAnimation.state) {
       const tl = gsap.timeline({
@@ -97,7 +95,9 @@ const CaseStudy = ({ year, client, design, image, index, description, href, titl
 
 export default CaseStudy
 
-const Wrapper = styled.div`
+const Wrapper = styled.div` 
+  position: relative;
+  overflow: hidden;
   width: 100%;
   height: 49.091vw;
   margin-bottom: 3.535vw;
@@ -109,7 +109,9 @@ const Wrapper = styled.div`
 `
 
 const Border = styled(Container)`
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   overflow: hidden;
   height: 100%;
   width: 100%;
@@ -117,7 +119,7 @@ const Border = styled(Container)`
   &::before {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 49.091vw;
     content: "";
     top: 0;
     left: 0;
@@ -130,6 +132,7 @@ const Border = styled(Container)`
     border-radius: 2.525vw;
 
     ${media.mobile} {
+      height: 190.67vw;
       border-radius: 13.33vw;
     }
   }
@@ -137,7 +140,7 @@ const Border = styled(Container)`
   &::after {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 49.091vw;
     content: "";
     top: 0;
     left: 0;
@@ -151,6 +154,7 @@ const Border = styled(Container)`
     border-radius: 2.525vw;
 
     ${media.mobile} {
+      height: 190.67vw;
       border-radius: 13.33vw;
     }
   }
