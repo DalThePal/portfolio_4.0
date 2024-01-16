@@ -17,8 +17,65 @@ import NewformIMG from 'images/new-form.webp'
 import RREIMG from 'images/rre.webp'
 import Source7IMG from 'images/source-7.webp'
 import GeniesIMG from 'images/genies.webp'
+import ZaneAndZoeIMG from 'images/zoe-zane.jpeg'
+import ReformCollectiveIMG from 'images/reform.jpeg'
+import BoostIMG from 'images/boost.jpeg'
+import RunwayIMG from 'images/runway.jpeg'
 
 const DATA = [
+  {
+    year: 2023,
+    client: "Runway Financial",
+    design: "Reform Collective",
+    title: "Runway",
+    image: RunwayIMG,
+    href: "https://runway.com",
+    awards: [
+      "CSS Design Site of The Day",
+      "Awwwards Site of The Day",
+      "Awwwards Developer Award",
+    ]
+  },
+  {
+    year: 2023,
+    client: "Boost Insurance",
+    design: "Reform Collective",
+    title: "Boost Insurance",
+    image: BoostIMG,
+    href: "https://boostinsurance.com",
+    awards: [
+      "CSS Design Kudos Award",
+      "CSS Design Innovation Award",
+      "CSS Design UX Design Award",
+      "CSS Design UI Design Award",
+    ]
+  },
+  {
+    year: 2023,
+    client: "Reform Collective",
+    design: "Reform Collective",
+    title: "Reform Collective ",
+    image: ReformCollectiveIMG,
+    href: "https://reformcollective.com",
+    awards: [
+      "FWA Site of The Day",
+    ]
+  },
+  {
+    year: 2023,
+    client: "Eric Hoffman",
+    design: "Eric Hoffman",
+    title: "Zane & Zoe",
+    image: ZaneAndZoeIMG,
+    href: "https://zaneandzoe.com",
+    awards: [
+      "CSS Design Site of The Day",
+      "CSS Design UI Design Award",
+      "CSS Design UX Design Award",
+      "CSS Design Innovation Award",
+      "Awwwards Site of The Day"
+    ]
+  },
   {
     year: 2022,
     client: "New Form Capital",

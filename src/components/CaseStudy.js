@@ -33,11 +33,6 @@ const CaseStudy = ({ year, client, design, image, index, description, href, titl
         }
       })
 
-      tl.from(borderRef.current, {
-        duration: 1,
-        height: '0%'
-      }, 0)
-
       tl.to(infoRef.current, {
         duration: 0.5,
         height: 'auto',
